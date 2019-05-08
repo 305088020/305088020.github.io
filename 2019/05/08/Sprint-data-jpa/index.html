@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Spring-data-jpa | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Spring Data JPA 介绍和使用1、Spring-data-jpa的基本介绍：1、历史背景JPA诞生的缘由是为了整合第三方ORM框架，建立一种标准的方式，百度百科说是JDK为了实现ORM的天下归一，目前也是在按照这个方向发展，但是还没能完全实现。在ORM框架中，Hibernate是一支很大的部队，使用很广泛，也很方便，能力也很强，同时Hibernate也是和JPA整合的比较良好，我们可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring-data-jpa">
+<meta property="og:url" content="http://yoursite.com/2019/05/08/Sprint-data-jpa/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Spring Data JPA 介绍和使用1、Spring-data-jpa的基本介绍：1、历史背景JPA诞生的缘由是为了整合第三方ORM框架，建立一种标准的方式，百度百科说是JDK为了实现ORM的天下归一，目前也是在按照这个方向发展，但是还没能完全实现。在ORM框架中，Hibernate是一支很大的部队，使用很广泛，也很方便，能力也很强，同时Hibernate也是和JPA整合的比较良好，我们可以">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-08T05:08:23.652Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring-data-jpa">
+<meta name="twitter:description" content="Spring Data JPA 介绍和使用1、Spring-data-jpa的基本介绍：1、历史背景JPA诞生的缘由是为了整合第三方ORM框架，建立一种标准的方式，百度百科说是JDK为了实现ORM的天下归一，目前也是在按照这个方向发展，但是还没能完全实现。在ORM框架中，Hibernate是一支很大的部队，使用很广泛，也很方便，能力也很强，同时Hibernate也是和JPA整合的比较良好，我们可以">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Sprint-data-jpa" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/08/Sprint-data-jpa/" class="article-date">
+  <time datetime="2019-05-08T05:07:23.296Z" itemprop="datePublished">2019-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spring-data-jpa
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Spring-Data-JPA-介绍和使用"><a href="#Spring-Data-JPA-介绍和使用" class="headerlink" title="Spring Data JPA 介绍和使用"></a>Spring Data JPA 介绍和使用</h1><h2 id="1、Spring-data-jpa的基本介绍："><a href="#1、Spring-data-jpa的基本介绍：" class="headerlink" title="1、Spring-data-jpa的基本介绍："></a><strong>1、Spring-data-jpa的基本介绍：</strong></h2><h3 id="1、历史背景"><a href="#1、历史背景" class="headerlink" title="1、历史背景"></a>1、历史背景</h3><p>JPA诞生的缘由是为了整合第三方ORM框架，建立一种标准的方式，百度百科说是JDK为了实现ORM的天下归一，目前也是在按照这个方向发展，但是还没能完全实现。在ORM框架中，Hibernate是一支很大的部队，使用很广泛，也很方便，能力也很强，同时Hibernate也是和JPA整合的比较良好，我们可以认为JPA是标准，事实上也是，JPA几乎都是接口，实现都是Hibernate在做，宏观上面看，在JPA的统一之下Hibernate很良好的运行。</p>
+<p>上面阐述了JPA和Hibernate的关系，那么Spring-data-jpa又是个什么东西呢？这地方需要稍微解释一下，</p>
+<p>Spring-data-jpa是Spring基于Hibernate开发的一个JPA框架。</p>
+<p>我们做Java开发的都知道Spring的强大，到目前为止，企业级应用Spring几乎是无所不能，无所不在，已经是事实上的标准了，企业级应用不使用Spring的几乎没有。而Spring整合第三方框架的能力又很强，他要做的不仅仅是个最早的IOC容器这么简单一回事，现在Spring涉及的方面太广，主要是体现在和第三方工具的整合上。而在与第三方整合这方面，Spring做了持久化这一块的工作</p>
+<p>于是就有了Spring-data-**这一系列包。包括，<code>Spring-data-jpa,Spring-data-template</code>,<code>Spring-data-mongodb</code>,<code>Spring-data-redis</code>，还有个民间产品，<code>mybatis-spring</code>，和前面类似，这是和mybatis整合的第三方包，这些都是干的持久化工具干的事儿。</p>
+<p>在使用持久化工具的时候，一般都有一个对象来操作数据库，在原生的Hibernate中叫做<code>Session</code>，在JPA中叫做<code>EntityManager</code>，在MyBatis中叫做<code>SqlSession</code>，通过这个对象来操作数据库。我们一般按照三层结构来看的话，Service层做业务逻辑处理，Dao层和数据库打交道，在Dao中，就存在着上面的对象。那么ORM框架本身提供的功能有什么呢？答案是基本的CRUD，所有的基础CRUD框架都提供，我们使用起来感觉很方便，很给力，业务逻辑层面的处理ORM是没有提供的，如果使用原生的框架，业务逻辑代码我们一般会自定义，会自己去写SQL语句，然后执行。</p>
+<p>在这个时候，Spring-data-jpa的威力就体现出来了，Spring-data-jpa框架功能更进一步，为我们做了 一个数据持久层框架几乎能做的任何事情。ORM提供的能力他都提供，ORM框架没有提供的业务逻辑功能Spring-data-jpa也提供，全方位的解决用户的需求。使用Spring-data-jpa进行开发的过程中，常用的功能，我们几乎不需要写一条sql语句，至少在我看来，企业级应用基本上可以不用写任何一条sql，当然spring-data-jpa也提供自己写sql的方式，这个就看个人怎么选择，都可以。</p>
+<h3 id="2、Repository名词解释"><a href="#2、Repository名词解释" class="headerlink" title="2、Repository名词解释"></a>2、Repository名词解释</h3><p>​        我们知道dao这个层叫做Data Access Object，数据库访问对象，这是一个广泛的词语，在jpa当中，我们还有一个词语叫做<code>Repository</code>，这里我们一般就用Repository结尾来表示这个dao，比如UserDao，这里我们使用UserRepository，当然名字无所谓，随意取，你可以意会一下我的意思，感受一下这里的含义和区别，同理，在mybatis中我们一般也不叫dao，mybatis由于使用xml映射文件（当然也提供注解，但是官方文档上面表示在有些地方，比如多表的复杂查询方面，注解还是无解，只能xml），我们一般使用mapper结尾，比如我们也不叫UserDao，而叫UserMapper。</p>
+<h3 id="3、Spring配置JPA"><a href="#3、Spring配置JPA" class="headerlink" title="3、Spring配置JPA"></a>3、Spring配置JPA</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">&lt;!-- dao --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">jpa:repositories</span> <span class="attr">base-package</span>=<span class="string">"your dao package"</span> <span class="attr">repository-impl-postfix</span>=<span class="string">"Impl"</span> <span class="attr">entity-manager-factory-ref</span>=<span class="string">"entityManagerFactory"</span> <span class="attr">transaction-manager-ref</span>=<span class="string">"transactionManager"</span> /&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>首先base-package属性，代表你的Repository接口的位置。</p>
+</li>
+<li><p><code>repository-impl-postfix</code>属性代表接口的实现类的后缀结尾字符，比如我们的<code>UserRepository</code>，那么他的实现类就叫做<code>UserRepositoryImpl</code>，和我们平时的使用习惯完全一致，</p>
+</li>
+<li><code>spring-data-jpa</code>的习惯是接口和实现类都需要放在同一个包里面</li>
+<li>这里我们的<code>UserRepositoryImpl</code>这个类的定义的时候我们不需要去指定实现<code>UserRepository</code>接口，根据spring-data-jpa自动就能判断二者的关系。</li>
+</ul>
+<p><strong>比如：我们的UserRepository和UserRepositoryImpl这两个类就像下面这样来写：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">User</span>, <span class="title">Integer</span>&gt;</span>&#123;&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserRepositoryImpl</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 那么这里为什么要这么做呢？</p>
+<p>原因是：spring-data-jpa提供基础的CRUD工作，同时也提供业务逻辑的功能。所以我们的Repository接口要做两项工作，继承spring-data-jpa提供的基础CRUD功能的接口，比如JpaRepository接口，同时自己还需要在UserRepository这个接口中定义自己的方法，那么导致的结局就是UserRepository这个接口中有很多的方法，那么如果我们的UserRepositoryImpl实现了UserRepository接口，导致的后果就是我们势必需要重写里面的所有方法，这是Java语法的规定，如此一来，悲剧就产生了，UserRepositoryImpl里面我们有很多的@Override方法，这显然是不行的，结论就是，这里我们不用去写implements部分。</p>
+</blockquote>
+<p>spring-data-jpa实现了上面的能力，那他是怎么实现的呢？这里我们通过源代码的方式来呈现他的来龙去脉，这个过程中cglib发挥了杰出的作用。</p>
+<p>在spring-data-jpa内部，有一个类，叫做<code>SimpleJpaRepository</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleJpaRepository</span>&lt;<span class="title">T</span>, <span class="title">ID</span> <span class="keyword">extends</span> <span class="title">Serializable</span>&gt; <span class="keyword">implements</span> <span class="title">JpaRepository</span>&lt;<span class="title">T</span>, <span class="title">ID</span>&gt;,</span></span><br><span class="line"><span class="class">      	<span class="title">JpaSpecificationExecutor</span>&lt;<span class="title">T</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>我们可以看到这个类是实现了JpaRepository接口的，事实上如果我们按照上面的配置，在同一个包下面有UserRepository，但是没有UserRepositoryImpl这个类的话，在运行时期UserRepository这个接口的实现就是上面的SimpleJpaRepository这个接口。而如果有UserRepositoryImpl这个文件的话，那么UserRepository的实现类就是UserRepositoryImpl，而UserRepositoryImpl这个类又是SimpleJpaRepository的子类，如此一来就很好的解决了上面的这个不用写implements的问题。我们通过阅读这个类的源代码可以发现，里面包装了entityManager，底层的调用关系还是entityManager在进行CRUD。</p>
+<h2 id="2、Spring-data-jpa用法"><a href="#2、Spring-data-jpa用法" class="headerlink" title="2、Spring-data-jpa用法"></a>2、Spring-data-jpa用法</h2><p><strong>实体：user</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span>(name = <span class="string">"user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> String birthday;</span><br><span class="line">    <span class="comment">// getter,setter</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>UserRepository接口</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">User</span>, <span class="title">Integer</span>&gt;</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>这样，User的基础CRUD都能做了，简约而不简单。</p>
+<h3 id="2、Spring-data-JPA接口"><a href="#2、Spring-data-JPA接口" class="headerlink" title="2、Spring data JPA接口"></a>2、Spring data JPA接口</h3><p>提供给用户使用的，主要有以下几个接口：</p>
+<ul>
+<li><p><strong>Repository</strong>：仅仅是一个标识，表明任何继承它的均为仓库接口类，方便Spring自动扫描识别 </p>
+</li>
+<li><p><strong>CrudRepository</strong>：继承<code>Repository</code>，实现了一组CRUD相关的方法 </p>
+</li>
+<li><p><strong>PagingAndSortingRepository</strong>：继承<code>CrudRepository</code>，实现了一组分页排序相关的方法 </p>
+</li>
+<li><p><strong>JpaRepository</strong>：继承 <code>PagingAndSortingRepository</code>,<code>QueryByExampleExecutor</code>实现一组JPA规范相关的方法 </p>
+</li>
+<li><p><strong>JpaSpecificationExecutor</strong>：比较特殊，不属于Repository体系，实现一组JPA Criteria查询相关的方法。Spring data JPA不会自动扫描识别，所以会报找不到对应的Bean，我们只需要继承任意一个继承了Repository的子接口或直接继承Repository接口，Spring data JPA就会自动扫描识别，进行统一的管理</p>
+<ul>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SpecificationExecutorRepository</span> <span class="keyword">extends</span> <span class="title">CrudRepository</span>&lt;<span class="title">User</span>, <span class="title">Integer</span>&gt;,</span></span><br><span class="line"><span class="class">		<span class="title">JpaSpecificationExecutor</span>&lt;<span class="title">User</span>&gt; </span>&#123;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>QueryByExampleExecutor</strong>：Example 查询</li>
+</ul>
+<h3 id="3、Spring-data-jpa基本查询"><a href="#3、Spring-data-jpa基本查询" class="headerlink" title="3、Spring-data-jpa基本查询"></a>3、Spring-data-jpa基本查询</h3><p>例如：用户登录验证：(用户名和密码来查询用户)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">User</span>, <span class="title">Integer</span>&gt;</span>&#123;</span><br><span class="line">    <span class="function">User <span class="title">findByNameAndPassword</span><span class="params">(String name, String password)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所有的逻辑只需要这么一行代码，一个没有实现的接口方法。</p>
+<p>通过debug信息，我们看到输出的sql语句是：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="keyword">name</span> = ? <span class="keyword">and</span> <span class="keyword">password</span> = ?</span><br></pre></td></tr></table></figure>
+<p>跟传统方式一模一样的结果。这简单到令人发指的程度，那么这一能力是如何实现的呢？</p>
+<blockquote>
+<p> 原理是：spring-data-jpa会根据方法的名字来自动生成sql语句，我们只需要按照方法定义的规则即可，上面的方法 findByNameAndPassword</p>
+<p>spring-data-jpa规定，方法都以findBy开头，sql的where部分就是NameAndPassword</p>
+<p>被spring-data-jpa翻译之后就编程了下面这种形态：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; where name = ? and password = ?</span><br><span class="line">&gt; </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+</blockquote>
+<p>如果是其他的操作符呢，比如like，前端模糊查询很多都是以like的方式来查询。比如根据名字查询用户，sql就是</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="keyword">name</span> <span class="keyword">like</span> = ?</span><br></pre></td></tr></table></figure>
+<p>这里spring-data-jpa规定，在属性后面接关键字，比如根据名字查询用户就成了:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">User</span>, <span class="title">Integer</span>&gt;</span>&#123;</span><br><span class="line">    <span class="function">User <span class="title">findByNameAndPassword</span><span class="params">(String name, String password)</span></span>;</span><br><span class="line">    <span class="comment">// like 查询</span></span><br><span class="line">    <span class="function">User <span class="title">findByNameLike</span><span class="params">(String name)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>被翻译之后sql：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> <span class="keyword">name</span> <span class="keyword">like</span> = ?</span><br></pre></td></tr></table></figure>
+<p>spring-data-jpa所有的语法规定如下图：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Keyword</th>
+<th style="text-align:left">Sample</th>
+<th style="text-align:left">JPQL snippet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>And</code></td>
+<td style="text-align:left"><code>findByLastnameAndFirstname</code></td>
+<td style="text-align:left"><code>… where x.lastname = ?1 and x.firstname = ?2</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Or</code></td>
+<td style="text-align:left"><code>findByLastnameOrFirstname</code></td>
+<td style="text-align:left"><code>… where x.lastname = ?1 or x.firstname = ?2</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Is,Equals</code></td>
+<td style="text-align:left"><code>findByFirstname</code>,<code>findByFirstnameIs</code>,<code>findByFirstnameEquals</code></td>
+<td style="text-align:left"><code>… where x.firstname = ?1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Between</code></td>
+<td style="text-align:left"><code>findByStartDateBetween</code></td>
+<td style="text-align:left"><code>… where x.startDate between ?1 and ?2</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LessThan</code></td>
+<td style="text-align:left"><code>findByAgeLessThan</code></td>
+<td style="text-align:left"><code>… where x.age &lt; ?1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>LessThanEqual</code></td>
+<td style="text-align:left"><code>findByAgeLessThanEqual</code></td>
+<td style="text-align:left"><code>… where x.age &lt;= ?1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GreaterThan</code></td>
+<td style="text-align:left"><code>findByAgeGreaterThan</code></td>
+<td style="text-align:left"><code>… where x.age &gt; ?1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>GreaterThanEqual</code></td>
+<td style="text-align:left"><code>findByAgeGreaterThanEqual</code></td>
+<td style="text-align:left"><code>… where x.age &gt;= ?1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>After</code></td>
+<td style="text-align:left"><code>findByStartDateAfter</code></td>
+<td style="text-align:left"><code>… where x.startDate &gt; ?1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Before</code></td>
+<td style="text-align:left"><code>findByStartDateBefore</code></td>
+<td style="text-align:left"><code>… where x.startDate &lt; ?1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>IsNull</code></td>
+<td style="text-align:left"><code>findByAgeIsNull</code></td>
+<td style="text-align:left"><code>… where x.age is null</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>IsNotNull,NotNull</code></td>
+<td style="text-align:left"><code>findByAge(Is)NotNull</code></td>
+<td style="text-align:left"><code>… where x.age not null</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Like</code></td>
+<td style="text-align:left"><code>findByFirstnameLike</code></td>
+<td style="text-align:left"><code>… where x.firstname like ?1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>NotLike</code></td>
+<td style="text-align:left"><code>findByFirstnameNotLike</code></td>
+<td style="text-align:left"><code>… where x.firstname not like ?1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>StartingWith</code></td>
+<td style="text-align:left"><code>findByFirstnameStartingWith</code></td>
+<td style="text-align:left"><code>… where x.firstname like ?1</code>(parameter bound with appended <code>%</code>)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>EndingWith</code></td>
+<td style="text-align:left"><code>findByFirstnameEndingWith</code></td>
+<td style="text-align:left"><code>… where x.firstname like ?1</code>(parameter bound with prepended <code>%</code>)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Containing</code></td>
+<td style="text-align:left"><code>findByFirstnameContaining</code></td>
+<td style="text-align:left"><code>… where x.firstname like ?1</code>(parameter bound wrapped in <code>%</code>)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>OrderBy</code></td>
+<td style="text-align:left"><code>findByAgeOrderByLastnameDesc</code></td>
+<td style="text-align:left"><code>… where x.age = ?1 order by x.lastname desc</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Not</code></td>
+<td style="text-align:left"><code>findByLastnameNot</code></td>
+<td style="text-align:left"><code>… where x.lastname &lt;&gt; ?1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>In</code></td>
+<td style="text-align:left"><code>findByAgeIn(Collection&lt;Age&gt; ages)</code></td>
+<td style="text-align:left"><code>… where x.age in ?1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>NotIn</code></td>
+<td style="text-align:left"><code>findByAgeNotIn(Collection&lt;Age&gt; ages)</code></td>
+<td style="text-align:left"><code>… where x.age not in ?1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>True</code></td>
+<td style="text-align:left"><code>findByActiveTrue()</code></td>
+<td style="text-align:left"><code>… where x.active = true</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>False</code></td>
+<td style="text-align:left"><code>findByActiveFalse()</code></td>
+<td style="text-align:left"><code>… where x.active = false</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>IgnoreCase</code></td>
+<td style="text-align:left"><code>findByFirstnameIgnoreCase</code></td>
+<td style="text-align:left"><code>… where UPPER(x.firstame) = UPPER(?1)</code></td>
+</tr>
+</tbody>
+</table>
+<p>通过上面，基本CRUD和基本的业务逻辑操作都得到了解决，我们要做的工作少到仅仅需要在UserRepository接口中定义几个方法，其他所有的工作都由spring-data-jpa来完成。</p>
+<h5 id="按照方法名解析规则如下"><a href="#按照方法名解析规则如下" class="headerlink" title="按照方法名解析规则如下:"></a>按照方法名解析规则如下:</h5><p><strong>find+全局修饰+By+实体属性名称+限定词+连接词+（其他实体属性）+OrderBy+排序属性+排序方向</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">findDistinctByFirstNameIgnoreCaseAndLastNameOrderByAgeDesc(String firstName,String lastName)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>全局修饰符：distinct,top,first</li>
+<li>关键词（限定词+连接词）：IsNull,IsNotNull,Like,NotLike,Containing,In,NotIn,IgnoreCase,Between,Equals,LessThan,GreaterThan,After,Before</li>
+<li>排序方向：Asc,Desc</li>
+</ul>
+<h5 id="嵌套实体方法命名规则："><a href="#嵌套实体方法命名规则：" class="headerlink" title="嵌套实体方法命名规则："></a><strong>嵌套实体方法命名规则：</strong></h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List&lt;Person&gt; <span class="title">findByAddress_ZipCode</span><span class="params">(ZipCode zipCode)</span></span></span><br></pre></td></tr></table></figure>
+<p>构词法：主实体中的子实体名称+_+子实体属性名称</p>
+<p>通过关键词构造方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对应sql：  select * from user where phone like '136%' and address like '%路%'</span></span><br><span class="line">findByPhoneStartingWithAndAdressContaining(String phone, String address);</span><br></pre></td></tr></table></figure>
+<h3 id="4、Spring-data-jpa动态查询"><a href="#4、Spring-data-jpa动态查询" class="headerlink" title="4、Spring-data-jpa动态查询"></a>4、Spring-data-jpa动态查询</h3><h4 id="1、使用JPQL实现传统的分页查询"><a href="#1、使用JPQL实现传统的分页查询" class="headerlink" title="1、使用JPQL实现传统的分页查询"></a>1、使用JPQL实现传统的分页查询</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Page&lt;Student&gt; <span class="title">search</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        String dataSql = <span class="string">"select t from User t where 1 = 1"</span>;</span><br><span class="line">        String countSql = <span class="string">"select count(t) from User t where 1 = 1"</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> != user &amp;&amp; !StringUtils.isEmpty(user.getName())) &#123;</span><br><span class="line">            dataSql += <span class="string">" and t.name = ?1"</span>;</span><br><span class="line">            countSql += <span class="string">" and t.name = ?1"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        Query dataQuery = em.createQuery(dataSql);</span><br><span class="line">        Query countQuery = em.createQuery(countSql);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> != user &amp;&amp; !StringUtils.isEmpty(user.getName())) &#123;</span><br><span class="line">            dataQuery.setParameter(<span class="number">1</span>, user.getName());</span><br><span class="line">            countQuery.setParameter(<span class="number">1</span>, user.getName());</span><br><span class="line">        &#125;<span class="keyword">long</span> totalSize = (<span class="keyword">long</span>) countQuery.getSingleResult();</span><br><span class="line">        Page&lt;User&gt; page = <span class="keyword">new</span> Page();</span><br><span class="line">        page.setTotalSize(totalSize);</span><br><span class="line">        List&lt;User&gt; data = dataQuery.getResultList();</span><br><span class="line">        page.setData(data);</span><br><span class="line">        <span class="keyword">return</span> page;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">	String sql = <span class="string">'select * from User'</span></span><br><span class="line">    String sql2 = <span class="string">'select * from User'</span></span><br><span class="line">    <span class="comment">// 查询总数</span></span><br><span class="line">    Query queryTotal = entityManager.createQuery(sql);</span><br><span class="line">    Long count = (Long)queryTotal.getSingleResult();</span><br><span class="line">	<span class="comment">// 查询的对象</span></span><br><span class="line">    Query query = entityManager.createQuery(sql2);</span><br><span class="line">	<span class="comment">// 添加分页信息</span></span><br><span class="line">    query.setFirstResult(pageable.getPageNumber() * pageable.getPageSize());</span><br><span class="line">    query.setMaxResults(pageable.getPageSize());</span><br><span class="line">	<span class="comment">// 获取结果</span></span><br><span class="line">    List resultMap = query.getResultList();</span><br><span class="line">	<span class="comment">// 将结果包装进Page对象中</span></span><br><span class="line">    Page&lt;EquipTransfer&gt; result = <span class="keyword">new</span> PageImpl(resultMap, pageable, count);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这种做法也是我们传统的经典做法。</p>
+<p>那么spring-data-jpa还有另外一种更好的方式，那就是所谓的类型检查的方式，上面我们的sql是字符串，没有进行类型检查，而下面的方式就使用了类型检查的方式。</p>
+<p>这个道理在mybatis中也有体现，mybatis可以使用字符串sql的方式，也可以使用接口的方式，而mybatis的官方推荐使用接口方式，因为有类型检查，会更安全。</p>
+</blockquote>
+<h4 id="2、用法"><a href="#2、用法" class="headerlink" title="2、用法"></a>2、用法</h4><p>UserRepository继承自<code>JpaRepository</code>，和<code>JpaSpecificationExecutor</code>两个接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Spring Data JPA repository for the LocoCheckTask entity.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unused"</span>)</span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">LocoCheckTask</span>, <span class="title">Long</span>&gt;, <span class="title">JpaSpecificationExecutor</span>&lt;<span class="title">LocoCheckTask</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再看<code>JpaSpecificationExecutor</code>接口的源代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.springframework.data.jpa.repository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Page;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Pageable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Sort;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.jpa.domain.Specification;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">JpaSpecificationExecutor</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function">T <span class="title">findOne</span><span class="params">(Specification&lt;T&gt; spec)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function">List&lt;T&gt; <span class="title">findAll</span><span class="params">(Specification&lt;T&gt; spec)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function">Page&lt;T&gt; <span class="title">findAll</span><span class="params">(Specification&lt;T&gt; spec, Pageable pageable)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function">List&lt;T&gt; <span class="title">findAll</span><span class="params">(Specification&lt;T&gt; spec, Sort sort)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">long</span> <span class="title">count</span><span class="params">(Specification&lt;T&gt; spec)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1、JPA-Criteria查询"><a href="#1、JPA-Criteria查询" class="headerlink" title="1、JPA Criteria查询"></a>1、JPA Criteria查询</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SpecificationExecutorRepository</span> <span class="keyword">extends</span> <span class="title">CrudRepository</span>&lt;<span class="title">User</span>, <span class="title">Integer</span>&gt;,</span></span><br><span class="line"><span class="class">		<span class="title">JpaSpecificationExecutor</span>&lt;<span class="title">User</span>&gt; </span>&#123;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Service类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpecificationExecutorRepositoryManager</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> SpecificationExecutorRepository dao;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 描述：根据name来查询用户</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> User <span class="title">findUserByName</span><span class="params">(<span class="keyword">final</span> String name)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> dao.findOne(<span class="keyword">new</span> Specification&lt;User&gt;() &#123;</span><br><span class="line">			</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;User&gt; root, CriteriaQuery&lt;?&gt; query,</span></span></span><br><span class="line"><span class="function"><span class="params">					CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">				Predicate predicate = cb.equal(root.get(<span class="string">"name"</span>), name);</span><br><span class="line">				<span class="keyword">return</span> predicate;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 描述：根据name和email来查询用户</span></span><br><span class="line"><span class="comment">	 * select * from User where name = ?1 and email = ?2</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> User <span class="title">findUserByNameAndEmail</span><span class="params">(<span class="keyword">final</span> String name, <span class="keyword">final</span> String email)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> dao.findOne(<span class="keyword">new</span> Specification&lt;User&gt;() &#123;</span><br><span class="line">			</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;User&gt; root,</span></span></span><br><span class="line"><span class="function"><span class="params">					CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">				List&lt;Predicate&gt; list = <span class="keyword">new</span> ArrayList&lt;Predicate&gt;();</span><br><span class="line">				Predicate predicate1 = cb.equal(root.get(<span class="string">"name"</span>), name);</span><br><span class="line">				Predicate predicate2 = cb.equal(root.get(<span class="string">"email"</span>), email);</span><br><span class="line">				list.add(predicate1);</span><br><span class="line">				list.add(predicate2);</span><br><span class="line">				<span class="comment">// 注意此处的处理</span></span><br><span class="line">				Predicate[] p = <span class="keyword">new</span> Predicate[list.size()];</span><br><span class="line">				<span class="keyword">return</span> cb.and(list.toArray(p));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 描述：组合查询</span></span><br><span class="line"><span class="comment">	 * todo</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> User <span class="title">findUserByUser</span><span class="params">(<span class="keyword">final</span> User userVo)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> dao.findOne(<span class="keyword">new</span> Specification&lt;User&gt;() &#123;</span><br><span class="line">			</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;User&gt; root,</span></span></span><br><span class="line"><span class="function"><span class="params">					CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">				Predicate predicate = cb.equal(root.get(<span class="string">"name"</span>), userVo.getName());</span><br><span class="line">				cb.and(predicate, cb.equal(root.get(<span class="string">"email"</span>), userVo.getEmail()));</span><br><span class="line">				cb.and(predicate, cb.equal(root.get(<span class="string">"password"</span>), userVo.getPassword()));</span><br><span class="line">				<span class="keyword">return</span> predicate;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 描述：范围查询in方法，例如查询用户id在[2,10]中的用户</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findUserByIds</span><span class="params">(<span class="keyword">final</span> List&lt;Integer&gt; ids)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> dao.findAll(<span class="keyword">new</span> Specification&lt;User&gt;() &#123;</span><br><span class="line"> </span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;User&gt; root,</span></span></span><br><span class="line"><span class="function"><span class="params">					CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">return</span> root.in(ids);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 描述：范围查询gt方法，例如查询用户id大于9的所有用户</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findUserByGtId</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> dao.findAll(<span class="keyword">new</span> Specification&lt;User&gt;() &#123;</span><br><span class="line"> </span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;User&gt; root,</span></span></span><br><span class="line"><span class="function"><span class="params">					CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">return</span> cb.gt(root.get(<span class="string">"id"</span>).as(Integer.class), id);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 描述：范围查询lt方法，例如查询用户id小于10的用户</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findUserByLtId</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> dao.findAll(<span class="keyword">new</span> Specification&lt;User&gt;() &#123;</span><br><span class="line"> </span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;User&gt; root,</span></span></span><br><span class="line"><span class="function"><span class="params">					CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">return</span> cb.lt(root.get(<span class="string">"id"</span>).as(Integer.class), id);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 描述：范围查询between方法，例如查询id在3和10之间的用户</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findUserBetweenId</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> start, <span class="keyword">final</span> <span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> dao.findAll(<span class="keyword">new</span> Specification&lt;User&gt;() &#123;</span><br><span class="line"> </span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;User&gt; root,</span></span></span><br><span class="line"><span class="function"><span class="params">					CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">return</span> cb.between(root.get(<span class="string">"id"</span>).as(Integer.class), start, end);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 描述：排序和分页操作</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Page&lt;User&gt; <span class="title">findUserAndOrder</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">		Sort sort = <span class="keyword">new</span> Sort(Direction.DESC, <span class="string">"id"</span>);</span><br><span class="line">		<span class="keyword">return</span> dao.findAll(<span class="keyword">new</span> Specification&lt;User&gt;() &#123;</span><br><span class="line"> </span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;User&gt; root,</span></span></span><br><span class="line"><span class="function"><span class="params">					CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">				<span class="keyword">return</span> cb.gt(root.get(<span class="string">"id"</span>).as(Integer.class), id);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;, <span class="keyword">new</span> PageRequest(<span class="number">0</span>, <span class="number">5</span>, sort));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 描述：只有排序操作</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findUserAndOrderSecondMethod</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> dao.findAll(<span class="keyword">new</span> Specification&lt;User&gt;() &#123;</span><br><span class="line"> </span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> Predicate <span class="title">toPredicate</span><span class="params">(Root&lt;User&gt; root,</span></span></span><br><span class="line"><span class="function"><span class="params">					CriteriaQuery&lt;?&gt; query, CriteriaBuilder cb)</span> </span>&#123;</span><br><span class="line">				cb.gt(root.get(<span class="string">"id"</span>).as(Integer.class), id);</span><br><span class="line">				query.orderBy(cb.desc(root.get(<span class="string">"id"</span>).as(Integer.class)));</span><br><span class="line">				<span class="keyword">return</span> query.getRestriction();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、-Query-创建注解查询"><a href="#2、-Query-创建注解查询" class="headerlink" title="2、@Query 创建注解查询"></a>2、@Query 创建注解查询</h3><p>@Query 注解的使用非常简单，只需在声明的方法上面标注该注解，同时提供一个 JP QL 查询语句即可</p>
+<p>此外，开发者也可以通过使用 @Query 来执行一个更新操作，为此，我们需要在使用 @Query 的同时，用 @Modifying 来将该操作标识为修改查询，这样框架最终会生成一个更新的操作，而非查询操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 描述：自定义查询，当Spring Data JPA无法提供时，需要自定义接口，此时可以使用这种方式</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDefineBySelf</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">User</span>, <span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 命名参数</span></span><br><span class="line"><span class="comment">	 * 描述：推荐使用这种方法，可以不用管参数的位置</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Query</span>(<span class="string">"select u from User u where u.name = :name"</span>)</span><br><span class="line">	<span class="function">User <span class="title">findUserByName</span><span class="params">(@Param(<span class="string">"name"</span>)</span> String name)</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 索引参数</span></span><br><span class="line"><span class="comment">	 * 描述：使用?占位符</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Query</span>(<span class="string">"select u from User u where u.email = ?1"</span>)<span class="comment">// 1表示第一个参数</span></span><br><span class="line">	<span class="function">User <span class="title">findUserByEmail</span><span class="params">(String email)</span></span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 描述：可以通过<span class="doctag">@Modifying</span>和<span class="doctag">@Query</span>来实现更新</span></span><br><span class="line"><span class="comment">	 * 注意：Modifying queries的返回值只能为void或者是int/Integer</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Modifying</span></span><br><span class="line">	<span class="meta">@Query</span>(<span class="string">"update User u set u.name = :name where u.id = :id"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">updateUserById</span><span class="params">(@Param(<span class="string">"name"</span>)</span> String name, @<span class="title">Param</span><span class="params">(<span class="string">"id"</span>)</span> <span class="keyword">int</span> id)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：@Modifying注解里面有一个配置clearAutomatically</p>
+<p>它说的是可以清除底层持久化上下文，就是entityManager这个类，我们知道jpa底层实现会有二级缓存，也就是在更新完数据库后，如果后面去用这个对象，你再去查这个对象，这个对象是在一级缓存，但是并没有跟数据库同步，这个时候用clearAutomatically=true,就会刷新hibernate的一级缓存了， 不然你在同一接口中，更新一个对象，接着查询这个对象，那么你查出来的这个对象还是之前的没有更新之前的状态</p>
+<h4 id="Modifying注解"><a href="#Modifying注解" class="headerlink" title="@Modifying注解"></a>@Modifying注解</h4><h4 id="SpEL-表达式"><a href="#SpEL-表达式" class="headerlink" title="SpEL 表达式"></a>SpEL 表达式</h4><p>Spring El的使用很灵活，合理使用可以达到事半功倍的效果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">User</span>,<span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Query</span>(<span class="string">"select u from #&#123;#entityName&#125; u where u.lastname = ?1"</span>)</span><br><span class="line">  <span class="function">List&lt;User&gt; <span class="title">findByLastname</span><span class="params">(String lastname)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">FullNameAndCountry</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Value</span>(<span class="string">"#&#123;target.firstName&#125; #&#123;target.lastName&#125;"</span>)</span><br><span class="line">  <span class="function">String <span class="title">getFullName</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Value</span>(<span class="string">"#&#123;target.address.country&#125;"</span>)</span><br><span class="line">  <span class="function">String <span class="title">getCountry</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3、-NamedQueries-命名查询"><a href="#3、-NamedQueries-命名查询" class="headerlink" title="3、@NamedQueries 命名查询"></a>3、@NamedQueries 命名查询</h3><h3 id="4、通过解析方法名创建查询"><a href="#4、通过解析方法名创建查询" class="headerlink" title="4、通过解析方法名创建查询"></a>4、通过解析方法名创建查询</h3><h4 id="创建查询的顺序"><a href="#创建查询的顺序" class="headerlink" title="创建查询的顺序"></a>创建查询的顺序</h4><p>Spring Data JPA 在为接口创建代理对象时，如果发现同时存在多种上述情况可用，它该优先采用哪种策略呢？为此，<a href="jpa:repositories" target="_blank" rel="noopener">jpa:repositories</a> 提供了 query-lookup-strategy 属性，用以指定查找的顺序。它有如下三个取值：</p>
+<ul>
+<li><p>create — 通过解析方法名字来创建查询。即使有符合的命名查询，或者方法通过 @Query 指定的查询语句，都将会被忽略。</p>
+</li>
+<li><p>create-if-not-found — 如果方法通过 @Query 指定了查询语句，则使用该语句实现查询；如果没有，则查找是否定义了符合条件的命名查询，如果找到，则使用该命名查询；如果两者都没有找到，则通过解析方 法名字来创建查询。这是 query-lookup-strategy 属性的默认值。</p>
+</li>
+<li><p>use-declared-query — 如果方法通过 @Query 指定了查询语句，则使用该语句实现查询；如果没有，则查找是否定义了符合条件的命名查询，如果找到，则使用该命名查询；如果两者都没有找到，则抛出异常</p>
+</li>
+</ul>
+<h3 id="5、QueryDslPredicateExecutor-流查询"><a href="#5、QueryDslPredicateExecutor-流查询" class="headerlink" title="5、QueryDslPredicateExecutor 流查询"></a>5、QueryDslPredicateExecutor 流查询</h3><h3 id="6、Example查询"><a href="#6、Example查询" class="headerlink" title="6、Example查询"></a>6、Example查询</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ExampleMatcher matcher = ExampleMatcher.matching()</span><br><span class="line">  .withMatcher(<span class="string">"firstname"</span>, match -&gt; match.endsWith())</span><br><span class="line">  .withMatcher(<span class="string">"firstname"</span>, match -&gt; match.startsWith());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>除了普通查询，计数和删除查询都可以使用</p>
+<p>long countByAddress(String address)</p>
+<p>List<testdemo> deleteByAddress(String address)</testdemo></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/08/Sprint-data-jpa/" data-id="cjvero5fm0000be7cpig65bhk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/08/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/05/08/Sprint-data-jpa/">Spring-data-jpa</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/08/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
