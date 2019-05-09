@@ -62,6 +62,152 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java面试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/09/Java面试/" class="article-date">
+  <time datetime="2019-05-09T05:14:10.650Z" itemprop="datePublished">2019-05-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##项目介绍<br>大部分情况，这是一场面试的开门题，面试官问这个问题，主要是考察你的概述能力和全局视野。有的人经常抱怨自己每天在堆业务，但没有成长。事实上，很多情况下确实在堆业务，但并不是没有成长的。并非做中间件或者技术架构才是成长，例如我们的需求分析能力，沟通协作能力，产品思维能力，抽象建模能力等都是一个非常重要的硬实力。<br>好的，现在进入正文。</p>
+<ul>
+<li>1、明确项目是做什么的</li>
+<li>2、明确项目的价值。（为什么做这个项目，它解决了用户什么痛点，它带来什么价值？）</li>
+<li>3、明确项目的功能。（这个项目涉及哪些功能？）</li>
+<li>4、明确项目的技术。（这个项目用到哪些技术？）</li>
+<li>5、明确个人在项目中的位置和作用。（你在这个项目的承担角色？）</li>
+<li>6、明确项目的整体架构。</li>
+<li>7、明确项目的优缺点,如果重新设计你会如何设计。</li>
+<li>8、明确项目的亮点。（这个项目有什么亮点？）</li>
+<li>9、明确技术成长。（你通过这个项目有哪些技术成长？）<h2 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h2></li>
+<li>1、List 和 Set 的区别</li>
+<li>2、HashSet 是如何保证不重复的</li>
+<li>3、HashMap 是线程安全的吗，为什么不是线程安全的（最好画图说明多线程环境下不安全）?</li>
+<li>4、HashMap 的扩容过程</li>
+<li>5、HashMap 1.7 与 1.8 的 区别，说明 1.8 做了哪些优化，如何优化的？</li>
+<li>6、final finally finalize</li>
+<li>7、强引用 、软引用、 弱引用、虚引用</li>
+<li>8、Java反射</li>
+<li>9、Arrays.sort 实现原理和 Collection 实现原理</li>
+<li>10、LinkedHashMap的应用</li>
+<li>11、cloneable接口实现原理</li>
+<li>12、异常分类以及处理机制</li>
+<li>13、wait和sleep的区别</li>
+<li>14、数组在内存中如何分配<h2 id="Java-并发"><a href="#Java-并发" class="headerlink" title="Java 并发"></a>Java 并发</h2></li>
+<li>1、synchronized 的实现原理以及锁优化？</li>
+<li>2、volatile 的实现原理？</li>
+<li>3、Java 的信号灯？</li>
+<li>4、synchronized 在静态方法和普通方法的区别？</li>
+<li>5、怎么实现所有线程在等待某个事件的发生才会去执行？</li>
+<li>6、CAS？CAS 有什么缺陷，如何解决？</li>
+<li>7、synchronized 和 lock 有什么区别？</li>
+<li>8、Hashtable 是怎么加锁的 ？</li>
+<li>9、HashMap 的并发问题？</li>
+<li>10、ConcurrenHashMap 介绍？1.8 中为什么要用红黑树？</li>
+<li>11、AQS</li>
+<li>12、如何检测死锁？怎么预防死锁？</li>
+<li>13、Java 内存模型？</li>
+<li>14、如何保证多线程下 i++ 结果正确？</li>
+<li>15、线程池的种类，区别和使用场景？</li>
+<li>16、分析线程池的实现原理和线程的调度过程？</li>
+<li>17、线程池如何调优，最大数目如何确认？</li>
+<li>18、ThreadLocal原理，用的时候需要注意什么？</li>
+<li>19、CountDownLatch 和 CyclicBarrier 的用法，以及相互之间的差别?</li>
+<li>20、LockSupport工具</li>
+<li>21、Condition接口及其实现原理</li>
+<li>22、Fork/Join框架的理解</li>
+<li>23、分段锁的原理,锁力度减小的思考</li>
+<li>24、八种阻塞队列以及各个阻塞队列的特性<h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3></li>
+<li>1、BeanFactory 和 FactoryBean？</li>
+<li>2、Spring IOC 的理解，其初始化过程？</li>
+<li>3、BeanFactory 和 ApplicationContext？</li>
+<li>4、Spring Bean 的生命周期，如何被管理的？</li>
+<li>5、Spring Bean 的加载过程是怎样的？</li>
+<li>6、如果要你实现Spring AOP，请问怎么实现？</li>
+<li>7、如果要你实现Spring IOC，你会注意哪些问题？</li>
+<li>8、Spring 是如何管理事务的，事务管理机制？</li>
+<li>9、Spring 的不同事务传播行为有哪些，干什么用的？</li>
+<li>10、Spring 中用到了那些设计模式？</li>
+<li>11、Spring MVC 的工作原理？</li>
+<li>12、Spring 循环注入的原理？</li>
+<li>13、Spring AOP的理解，各个术语，他们是怎么相互工作的？</li>
+<li>14、Spring 如何保证 Controller 并发的安全？<h2 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h2></li>
+<li>1、BIO、NIO和AIO</li>
+<li>2、Netty 的各大组件</li>
+<li>3、Netty的线程模型</li>
+<li>4、TCP 粘包/拆包的原因及解决方法</li>
+<li>5、了解哪几种序列化协议？包括使用场景和如何去选择</li>
+<li>6、Netty的零拷贝实现</li>
+<li>7、Netty的高性能表现在哪些方面<h2 id="分布式相关"><a href="#分布式相关" class="headerlink" title="分布式相关"></a>分布式相关</h2></li>
+<li>1、Dubbo的底层实现原理和机制</li>
+<li>2、描述一个服务从发布到被消费的详细过程</li>
+<li>3、分布式系统怎么做服务治理</li>
+<li>4、接口的幂等性的概念</li>
+<li>5、消息中间件如何解决消息丢失问题</li>
+<li>6、Dubbo的服务请求失败怎么处理</li>
+<li>7、重连机制会不会造成错误</li>
+<li>8、对分布式事务的理解</li>
+<li>9、如何实现负载均衡，有哪些算法可以实现？</li>
+<li>10、Zookeeper的用途，选举的原理是什么？</li>
+<li>11、数据的垂直拆分水平拆分。</li>
+<li>12、zookeeper原理和适用场景</li>
+<li>13、zookeeper watch机制</li>
+<li>14、redis/zk节点宕机如何处理</li>
+<li>15、分布式集群下如何做到唯一序列号</li>
+<li>16、如何做一个分布式锁</li>
+<li>17、用过哪些MQ，怎么用的，和其他mq比较有什么优缺点，MQ的连接是线程安全的吗</li>
+<li>18、MQ系统的数据如何保证不丢失</li>
+<li>19、列举出你能想到的数据库分库分表策略；分库分表后，如何解决全表查询的问题</li>
+<li>20、zookeeper的选举策略</li>
+<li>21、全局ID<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2></li>
+<li>1、mysql分页有什么优化</li>
+<li>2、悲观锁、乐观锁</li>
+<li>3、组合索引，最左原则</li>
+<li>4、mysql 的表锁、行锁</li>
+<li>5、mysql 性能优化</li>
+<li>6、mysql的索引分类：B+，hash；什么情况用什么索引</li>
+<li>7、事务的特性和隔离级别<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2></li>
+<li>1、Redis用过哪些数据数据，以及Redis底层怎么实现</li>
+<li>2、Redis缓存穿透，缓存雪崩</li>
+<li>3、如何使用Redis来实现分布式锁</li>
+<li>4、Redis的并发竞争问题如何解决</li>
+<li>5、Redis持久化的几种方式，优缺点是什么，怎么实现的</li>
+<li>6、Redis的缓存失效策略</li>
+<li>7、Redis集群，高可用，原理</li>
+<li>8、Redis缓存分片</li>
+<li>9、Redis的数据淘汰策略<h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2></li>
+<li>1、详细jvm内存模型</li>
+<li>2、讲讲什么情况下回出现内存溢出，内存泄漏？</li>
+<li>3、说说Java线程栈</li>
+<li>4、JVM 年轻代到年老代的晋升过程的判断条件是什么呢？</li>
+<li>5、JVM 出现 fullGC 很频繁，怎么去线上排查问题？</li>
+<li>6、类加载为什么要使用双亲委派模式，有没有什么场景是打破了这个模式？</li>
+<li>7、类的实例化顺序</li>
+<li>8、JVM垃圾回收机制，何时触发MinorGC等操作</li>
+<li>9、JVM 中一次完整的 GC 流程（从 ygc 到 fgc）是怎样的</li>
+<li>10、各种回收器，各自优缺点，重点CMS、G1</li>
+<li>11、各种回收算法</li>
+<li>12、OOM错误，stackoverflow错误，permgen space错误</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/09/Java面试/" data-id="cjvg76dy30001n27crwoqbsr9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Sprint-data-jpa" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/08/Sprint-data-jpa/" class="article-date">
@@ -337,7 +483,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/08/Sprint-data-jpa/" data-id="cjvewifw40002ef7cj20oi9e7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/08/Sprint-data-jpa/" data-id="cjvg76dz00003n27cm2lmon03" class="article-share-link">Share</a>
       
       
     </footer>
@@ -382,7 +528,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/08/hello-world/" data-id="cjvewifve0001ef7cj9s74ssh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/08/hello-world/" data-id="cjvg76dy60002n27c9eccx32a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -421,6 +567,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/05/09/Java面试/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2019/05/08/Sprint-data-jpa/">Spring-data-jpa</a>
